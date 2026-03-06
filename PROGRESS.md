@@ -23,9 +23,9 @@
 ```yaml
 id: TASK-001
 title: Next.js 프로젝트 초기화 및 기본 설정
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-06"
+notes: "Next.js 16 (App Router, src/ layout), Tailwind v4, Vitest 4, Playwright, shadcn/ui initialized. Used eslint binary directly (next lint removed in v16). vitest/globals types added to tsconfig."
 
 steps:
   - pnpm create next-app@latest suneung-ai --typescript --tailwind --eslint --app --src-dir=false
@@ -451,7 +451,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 
 | 태스크 | 제목 | 상태 |
 |--------|------|------|
-| TASK-001 | 프로젝트 초기 설정 | ⬜ 대기 |
+| TASK-001 | 프로젝트 초기 설정 | ✅ 완료 |
 | TASK-002 | DB 스키마 구현 | ⬜ 대기 |
 | TASK-003 | 인증 시스템 | ⬜ 대기 |
 | TASK-004 | 문제 타입 및 시드 데이터 | ⬜ 대기 |
