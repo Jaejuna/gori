@@ -29,6 +29,9 @@
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.5.0"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed/index.ts"
+  },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4",
