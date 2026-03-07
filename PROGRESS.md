@@ -176,9 +176,9 @@ commit_message: "feat(api): add questions and passage-types GET endpoints"
 ```yaml
 id: TASK-006
 title: 테스트 세션 시작 및 답안 제출 기능
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-07"
+notes: "Sessions API with create/get/end. Answer submission returns isCorrect + explanation immediately. Timer measured client-side (timeSpent in seconds). 8 integration tests passing."
 depends_on: [TASK-005, TASK-003]
 
 steps:
@@ -456,7 +456,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-003 | 인증 시스템 | ✅ 완료 |
 | TASK-004 | 문제 타입 및 시드 데이터 | ✅ 완료 |
 | TASK-005 | 문제 조회 API | ✅ 완료 |
-| TASK-006 | 문제 풀기 기능 | ⬜ 대기 |
+| TASK-006 | 문제 풀기 기능 | ✅ 완료 |
 | TASK-007 | 학생 오답 분석 대시보드 | ⬜ 대기 |
 | TASK-008 | HuggingFace 임베딩 | ⬜ 대기 |
 | TASK-009 | AI 추천 엔진 | ⬜ 대기 |
