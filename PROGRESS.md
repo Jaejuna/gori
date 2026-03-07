@@ -208,9 +208,9 @@ commit_message: "feat(student): implement test session and answer submission flo
 ```yaml
 id: TASK-007
 title: 학생용 취약 영역 분석 페이지
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-07"
+notes: "Recharts 3 + @tanstack/react-query 5. Pure analytics functions in lib/analytics.ts. Radar + Line charts. Tooltip formatter typed as (value) => string[] due to Recharts v3 type changes."
 depends_on: [TASK-006]
 
 steps:
@@ -457,7 +457,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-004 | 문제 타입 및 시드 데이터 | ✅ 완료 |
 | TASK-005 | 문제 조회 API | ✅ 완료 |
 | TASK-006 | 문제 풀기 기능 | ✅ 완료 |
-| TASK-007 | 학생 오답 분석 대시보드 | ⬜ 대기 |
+| TASK-007 | 학생 오답 분석 대시보드 | ✅ 완료 |
 | TASK-008 | HuggingFace 임베딩 | ⬜ 대기 |
 | TASK-009 | AI 추천 엔진 | ⬜ 대기 |
 | TASK-010 | 학생 추천 UI | ⬜ 대기 |
