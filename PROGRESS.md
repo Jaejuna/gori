@@ -239,9 +239,9 @@ commit_message: "feat(student): add analytics dashboard with charts"
 ```yaml
 id: TASK-008
 title: 한국어 임베딩 서비스 및 유사 문제 탐색
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-07"
+notes: "HuggingFace InferenceClient, jhgan/ko-sroberta-multitask, 768-dim. 30s AbortController timeout. Batch-of-10. flattenEmbedding handles number[]|number[][]|token-mean-pool. Admin embed route uses $queryRaw (embedding is Unsupported vector type). vi.mock hoisted — moved callCount to module level."
 depends_on: [TASK-004]
 
 steps:
@@ -458,7 +458,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-005 | 문제 조회 API | ✅ 완료 |
 | TASK-006 | 문제 풀기 기능 | ✅ 완료 |
 | TASK-007 | 학생 오답 분석 대시보드 | ✅ 완료 |
-| TASK-008 | HuggingFace 임베딩 | ⬜ 대기 |
+| TASK-008 | HuggingFace 임베딩 | ✅ 완료 |
 | TASK-009 | AI 추천 엔진 | ⬜ 대기 |
 | TASK-010 | 학생 추천 UI | ⬜ 대기 |
 | TASK-011 | 선생님 학생 목록 | ⬜ 대기 |
