@@ -147,9 +147,9 @@ commit_message: "feat(data): add question types and seed 30+ sample questions"
 ```yaml
 id: TASK-005
 title: 문제 목록/상세 API 구현
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-07"
+notes: "Zod v4 used for query validation. All routes require auth (401). 10 integration test scenarios passing."
 depends_on: [TASK-004]
 
 steps:
@@ -455,7 +455,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-002 | DB 스키마 구현 | ✅ 완료 |
 | TASK-003 | 인증 시스템 | ✅ 완료 |
 | TASK-004 | 문제 타입 및 시드 데이터 | ✅ 완료 |
-| TASK-005 | 문제 조회 API | ⬜ 대기 |
+| TASK-005 | 문제 조회 API | ✅ 완료 |
 | TASK-006 | 문제 풀기 기능 | ⬜ 대기 |
 | TASK-007 | 학생 오답 분석 대시보드 | ⬜ 대기 |
 | TASK-008 | HuggingFace 임베딩 | ⬜ 대기 |
