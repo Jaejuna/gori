@@ -54,9 +54,9 @@ commit_message: "chore: initialize Next.js project with toolchain setup"
 ```yaml
 id: TASK-002
 title: Prisma 스키마 정의 및 초기 마이그레이션
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-07"
+notes: "Prisma 6 used (v7 removed url/directUrl from schema.prisma). All 7 models implemented. lib/db.ts singleton. prisma generate succeeds. DB unit test uses class-based mock. prisma migrate dev requires live DB (skipped in CI)."
 depends_on: [TASK-001]
 
 steps:
@@ -452,7 +452,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | 태스크 | 제목 | 상태 |
 |--------|------|------|
 | TASK-001 | 프로젝트 초기 설정 | ✅ 완료 |
-| TASK-002 | DB 스키마 구현 | ⬜ 대기 |
+| TASK-002 | DB 스키마 구현 | ✅ 완료 |
 | TASK-003 | 인증 시스템 | ⬜ 대기 |
 | TASK-004 | 문제 타입 및 시드 데이터 | ⬜ 대기 |
 | TASK-005 | 문제 조회 API | ⬜ 대기 |
