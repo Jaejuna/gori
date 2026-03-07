@@ -83,9 +83,9 @@ commit_message: "feat(db): add Prisma schema with all models and initial migrati
 ```yaml
 id: TASK-003
 title: NextAuth.js v5 설치 및 Credentials 인증 구현
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-07"
+notes: "next-auth@5 beta, Credentials provider, JWT strategy. Register API at /api/register (separate from NextAuth). middleware.ts for role-based routing. Next.js 16 shows deprecated warning for middleware (use proxy) but build succeeds."
 depends_on: [TASK-002]
 
 steps:
@@ -453,7 +453,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 |--------|------|------|
 | TASK-001 | 프로젝트 초기 설정 | ✅ 완료 |
 | TASK-002 | DB 스키마 구현 | ✅ 완료 |
-| TASK-003 | 인증 시스템 | ⬜ 대기 |
+| TASK-003 | 인증 시스템 | ✅ 완료 |
 | TASK-004 | 문제 타입 및 시드 데이터 | ⬜ 대기 |
 | TASK-005 | 문제 조회 API | ⬜ 대기 |
 | TASK-006 | 문제 풀기 기능 | ⬜ 대기 |
