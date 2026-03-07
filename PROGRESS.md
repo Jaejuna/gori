@@ -119,9 +119,9 @@ commit_message: "feat(auth): implement NextAuth with credentials and role-based 
 ```yaml
 id: TASK-004
 title: 수능 국어 문제 타입 정의 및 시드 데이터 적재
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-07"
+notes: "16 passage types (4 categories). 32 sample questions. Seed script uses upsert. JSON options cast via 'as unknown as Prisma.InputJsonValue' for type safety. prisma db seed requires live DB."
 depends_on: [TASK-002]
 
 steps:
@@ -454,7 +454,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-001 | 프로젝트 초기 설정 | ✅ 완료 |
 | TASK-002 | DB 스키마 구현 | ✅ 완료 |
 | TASK-003 | 인증 시스템 | ✅ 완료 |
-| TASK-004 | 문제 타입 및 시드 데이터 | ⬜ 대기 |
+| TASK-004 | 문제 타입 및 시드 데이터 | ✅ 완료 |
 | TASK-005 | 문제 조회 API | ⬜ 대기 |
 | TASK-006 | 문제 풀기 기능 | ⬜ 대기 |
 | TASK-007 | 학생 오답 분석 대시보드 | ⬜ 대기 |
