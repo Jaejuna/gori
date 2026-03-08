@@ -422,9 +422,9 @@ commit_message: "test(e2e): add student and teacher core flow tests with Playwri
 ```yaml
 id: TASK-014
 title: CI/CD 파이프라인 및 Vercel 배포 구성
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-09"
+notes: ".github/workflows/ci.yml: typecheck+lint+test on PRs, build after, E2E on main. vercel.json: prisma generate+migrate deploy+next build. .env.local.example already complete."
 depends_on: [TASK-013]
 
 steps:
@@ -464,4 +464,4 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-011 | 선생님 학생 목록 | ✅ 완료 |
 | TASK-012 | 학생 상세 + 추천 검토 | ✅ 완료 |
 | TASK-013 | E2E 테스트 | ✅ 완료 |
-| TASK-014 | CI/CD 및 배포 | ⬜ 대기 |
+| TASK-014 | CI/CD 및 배포 | ✅ 완료 |
