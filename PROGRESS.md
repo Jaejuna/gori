@@ -397,9 +397,9 @@ commit_message: "feat(teacher): add student detail page with recommendation revi
 ```yaml
 id: TASK-013
 title: 핵심 사용자 플로우 E2E 테스트
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-09"
+notes: "Playwright E2E for student and teacher flows. Tests cover register/login/dashboard/redirect. pnpm test:e2e runs Playwright (separate from pnpm test which runs Vitest). Unused context param removed to satisfy eslint no-unused-vars."
 depends_on: [TASK-012]
 
 steps:
@@ -463,5 +463,5 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-010 | 학생 추천 UI | ✅ 완료 |
 | TASK-011 | 선생님 학생 목록 | ✅ 완료 |
 | TASK-012 | 학생 상세 + 추천 검토 | ✅ 완료 |
-| TASK-013 | E2E 테스트 | ⬜ 대기 |
+| TASK-013 | E2E 테스트 | ✅ 완료 |
 | TASK-014 | CI/CD 및 배포 | ⬜ 대기 |
