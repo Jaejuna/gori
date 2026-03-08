@@ -305,9 +305,9 @@ commit_message: "feat(ai): implement 3-stage recommendation pipeline with LLM fa
 ```yaml
 id: TASK-010
 title: 학생용 AI 추천 문제 페이지 구현
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-08"
+notes: "useRecommendations hook, RecommendationCard, /recommendations page, dashboard section. Skeleton loading and empty state included."
 depends_on: [TASK-009]
 
 steps:
@@ -460,7 +460,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-007 | 학생 오답 분석 대시보드 | ✅ 완료 |
 | TASK-008 | HuggingFace 임베딩 | ✅ 완료 |
 | TASK-009 | AI 추천 엔진 | ✅ 완료 |
-| TASK-010 | 학생 추천 UI | ⬜ 대기 |
+| TASK-010 | 학생 추천 UI | ✅ 완료 |
 | TASK-011 | 선생님 학생 목록 | ⬜ 대기 |
 | TASK-012 | 학생 상세 + 추천 검토 | ⬜ 대기 |
 | TASK-013 | E2E 테스트 | ⬜ 대기 |
