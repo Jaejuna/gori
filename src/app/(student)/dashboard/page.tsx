@@ -1,8 +1,10 @@
 'use client';
 
 import { useStudentAnalytics } from '@/hooks/useStudentAnalytics';
+import { useRecommendations } from '@/hooks/useRecommendations';
 import { PassageTypeRadar } from '@/components/charts/PassageTypeRadar';
 import { ProgressLine } from '@/components/charts/ProgressLine';
+import { RecommendationCard } from '@/components/recommendation/RecommendationCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
@@ -10,6 +12,7 @@ import { Button } from '@/components/ui/button';
 
 export default function StudentDashboard() {
   const { data, isLoading, error } = useStudentAnalytics();
+  const { data: recommendations, isLoading: recsLoading } = useRecommendations();
 
   if (isLoading) {
     return (
@@ -127,6 +130,37 @@ export default function StudentDashboard() {
             </CardHeader>
             <CardContent>
               <ProgressLine trend={data.last30DaysTrend} />
+            </CardContent>
+          </Card>
+
+          {/* Today's recommendations */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-base">오늘의 추천</CardTitle>
+                <Button asChild variant="ghost" size="sm">
+                  <Link href="/recommendations">전체 보기</Link>
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              {recsLoading ? (
+                <div className="space-y-3">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-20 animate-pulse rounded bg-muted" />
+                  ))}
+                </div>
+              ) : !recommendations || recommendations.length === 0 ? (
+                <p className="text-sm text-muted-foreground py-4 text-center">
+                  아직 풀이 기록이 없어요
+                </p>
+              ) : (
+                <div className="space-y-3">
+                  {recommendations.slice(0, 3).map((rec) => (
+                    <RecommendationCard key={rec.id} recommendation={rec} />
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         </>
