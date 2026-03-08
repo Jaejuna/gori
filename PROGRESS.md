@@ -268,9 +268,9 @@ commit_message: "feat(ai): add HuggingFace embedding service and similarity sear
 ```yaml
 id: TASK-009
 title: Rule-based + LLM 추천 파이프라인 구현
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-08"
+notes: "Claude Haiku via @anthropic-ai/sdk. 3-stage: wrong-pattern weights → embedding similarity → LLM reason. NEXT_PUBLIC_USE_LLM=false skips LLM. Daily limit 3 via DB LlmUsage. PassageType uses label field (not name). Answer uses createdAt (not answeredAt)."
 depends_on: [TASK-008, TASK-007]
 
 steps:
@@ -459,7 +459,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-006 | 문제 풀기 기능 | ✅ 완료 |
 | TASK-007 | 학생 오답 분석 대시보드 | ✅ 완료 |
 | TASK-008 | HuggingFace 임베딩 | ✅ 완료 |
-| TASK-009 | AI 추천 엔진 | ⬜ 대기 |
+| TASK-009 | AI 추천 엔진 | ✅ 완료 |
 | TASK-010 | 학생 추천 UI | ⬜ 대기 |
 | TASK-011 | 선생님 학생 목록 | ⬜ 대기 |
 | TASK-012 | 학생 상세 + 추천 검토 | ⬜ 대기 |
