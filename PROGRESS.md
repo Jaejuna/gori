@@ -362,9 +362,9 @@ commit_message: "feat(teacher): add student list dashboard with sorting and sear
 ```yaml
 id: TASK-012
 title: 선생님 - 학생 상세 페이지 (오답 패턴 + 추천 승인/제외)
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-08"
+notes: "RecommendationReview component. PATCH approve/exclude, POST direct-add. Teacher can only access own students (teacherId check). Student detail page uses use(params) for async params in Next.js 16."
 depends_on: [TASK-011, TASK-010]
 
 steps:
@@ -462,6 +462,6 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-009 | AI 추천 엔진 | ✅ 완료 |
 | TASK-010 | 학생 추천 UI | ✅ 완료 |
 | TASK-011 | 선생님 학생 목록 | ✅ 완료 |
-| TASK-012 | 학생 상세 + 추천 검토 | ⬜ 대기 |
+| TASK-012 | 학생 상세 + 추천 검토 | ✅ 완료 |
 | TASK-013 | E2E 테스트 | ⬜ 대기 |
 | TASK-014 | CI/CD 및 배포 | ⬜ 대기 |
