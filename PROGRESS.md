@@ -333,9 +333,9 @@ commit_message: "feat(student): add AI recommendation cards on dashboard and rec
 ```yaml
 id: TASK-011
 title: 선생님 대시보드 - 반 학생 목록 및 현황
-passes: false
-completed_at: null
-notes: ""
+passes: true
+completed_at: "2026-03-08"
+notes: "Teacher pages under (teacher)/teacher/* to avoid route conflict with (student)/dashboard. StudentTable uses sortIndicator() helper (not SortIndicator component) to avoid react-hooks/static-components lint error."
 depends_on: [TASK-007]
 
 steps:
@@ -461,7 +461,7 @@ commit_message: "chore(ci): add GitHub Actions CI and Vercel deployment config"
 | TASK-008 | HuggingFace 임베딩 | ✅ 완료 |
 | TASK-009 | AI 추천 엔진 | ✅ 완료 |
 | TASK-010 | 학생 추천 UI | ✅ 완료 |
-| TASK-011 | 선생님 학생 목록 | ⬜ 대기 |
+| TASK-011 | 선생님 학생 목록 | ✅ 완료 |
 | TASK-012 | 학생 상세 + 추천 검토 | ⬜ 대기 |
 | TASK-013 | E2E 테스트 | ⬜ 대기 |
 | TASK-014 | CI/CD 및 배포 | ⬜ 대기 |
