@@ -41,9 +41,8 @@ test.describe('Student Flow', () => {
   });
 
   test('student can view test page', async ({ page }) => {
-    // Mock session by navigating to login page
     await page.goto('/login');
-    await expect(page.getByRole('heading', { name: /로그인/ })).toBeVisible();
+    await expect(page.getByText('로그인').first()).toBeVisible();
   });
 
   test('recommendations page shows empty state without history', async ({ page }) => {

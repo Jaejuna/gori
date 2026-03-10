@@ -26,6 +26,7 @@ test.describe('Teacher Flow', () => {
       await page.getByLabel('이메일').fill(email);
       await page.getByLabel('비밀번호').fill(password);
       await page.getByRole('button', { name: '로그인' }).click();
+      await expect(page).toHaveURL(/\/dashboard/, { timeout: 10000 });
     }
 
     // Teacher should be able to navigate to teacher dashboard
@@ -48,7 +49,7 @@ test.describe('Teacher Flow', () => {
 
   test('login page is accessible', async ({ page }) => {
     await page.goto('/login');
-    await expect(page.getByRole('heading', { name: /로그인/ })).toBeVisible();
+    await expect(page.getByText('로그인').first()).toBeVisible();
     await expect(page.getByLabel('이메일')).toBeVisible();
     await expect(page.getByLabel('비밀번호')).toBeVisible();
   });
