@@ -195,7 +195,6 @@ GitHub `main` 브랜치에 push하면 GitHub Actions CI가 실행되고, 통과 
 
 | 문서 | 설명 |
 |------|------|
-| [PRD.md](./PRD.md) | 제품 요구사항 전체 스펙 |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | 시스템 아키텍처 상세 |
 | [docs/DATABASE_SCHEMA.md](./docs/DATABASE_SCHEMA.md) | Prisma 스키마 명세 |
 | [docs/AI_ENGINE.md](./docs/AI_ENGINE.md) | AI 추천 엔진 상세 |
