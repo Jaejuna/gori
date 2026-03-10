@@ -1,17 +1,18 @@
-import { auth } from '@/lib/auth';
+import NextAuth from 'next-auth';
+import { authConfig } from '@/lib/auth.config';
 import { NextResponse } from 'next/server';
+
+const { auth } = NextAuth(authConfig);
 
 const PUBLIC_PATHS = ['/login', '/register', '/api/auth', '/api/register'];
 
 export default auth((req) => {
   const { pathname } = req.nextUrl;
 
-  // Allow public paths
   if (PUBLIC_PATHS.some((p) => pathname.startsWith(p))) {
     return NextResponse.next();
   }
 
-  // Require auth for all other paths
   if (!req.auth) {
     const loginUrl = new URL('/login', req.url);
     return NextResponse.redirect(loginUrl);
@@ -19,7 +20,6 @@ export default auth((req) => {
 
   const role = (req.auth.user as { role?: string } | undefined)?.role;
 
-  // Role-based access control
   if (pathname.startsWith('/teacher') && role !== 'TEACHER') {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
