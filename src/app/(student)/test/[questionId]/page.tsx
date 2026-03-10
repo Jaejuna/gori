@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { QuestionCard } from '@/components/question/QuestionCard';
 import { AnswerFeedback } from '@/components/question/AnswerFeedback';
+import { Button } from '@/components/ui/button';
 import type { QuestionOption } from '@/types/question';
 
 interface QuestionDetail {
@@ -114,13 +116,24 @@ export default function QuestionPage() {
       />
 
       {result && (
-        <div className="mt-6">
+        <div className="mt-6 space-y-4">
           <AnswerFeedback
             isCorrect={result.isCorrect}
             correctAnswer={result.correctAnswer}
             selectedOption={selectedOption ?? 0}
             explanation={result.explanation}
           />
+          <div className="grid grid-cols-3 gap-2">
+            <Button asChild variant="outline">
+              <Link href="/test">다음 문제 풀기</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="/recommendations">추천 문제 보기</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/dashboard">대시보드로</Link>
+            </Button>
+          </div>
         </div>
       )}
     </div>
