@@ -79,26 +79,26 @@ flowchart LR
 ```mermaid
 graph LR
     subgraph Public["공개 (누구나)"]
-        L[/login]
-        R[/register]
+        L["/login"]
+        R["/register"]
     end
 
     subgraph Student["학생 전용"]
-        SD[/dashboard]
-        ST[/test]
-        SR[/recommendations]
+        SD["/dashboard"]
+        ST["/test"]
+        SR["/recommendations"]
     end
 
     subgraph Teacher["선생님 전용"]
-        TD[/teacher/dashboard]
-        TL[/teacher/students]
+        TD["/teacher/dashboard"]
+        TL["/teacher/students"]
         TS["/teacher/students/:id"]
     end
 
     MW["미들웨어 (NextAuth JWT)"]
     MW -->|미인증| L
-    MW -->|role=STUDENT| Student
-    MW -->|role=TEACHER| Teacher
+    MW -->|"role=STUDENT"| Student
+    MW -->|"role=TEACHER"| Teacher
 ```
 
 ---
