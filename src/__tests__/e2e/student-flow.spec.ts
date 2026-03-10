@@ -13,11 +13,7 @@ test.describe('Student Flow', () => {
     await page.getByLabel('이름').fill(name);
     await page.getByLabel('이메일').fill(email);
     await page.getByLabel('비밀번호').fill(password);
-    // Select student role if there's a role selector
-    const roleSelect = page.getByRole('combobox').first();
-    if (await roleSelect.isVisible()) {
-      await roleSelect.selectOption('STUDENT');
-    }
+    await page.getByRole('button', { name: '학생' }).click();
     await page.getByRole('button', { name: '회원가입' }).click();
 
     // Should redirect to login or dashboard

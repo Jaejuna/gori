@@ -10,13 +10,10 @@ test.describe('Teacher Flow', () => {
 
     // Register as teacher
     await page.goto('/register');
+    await page.getByRole('button', { name: '선생님' }).click();
     await page.getByLabel('이름').fill(name);
     await page.getByLabel('이메일').fill(email);
     await page.getByLabel('비밀번호').fill(password);
-    const roleSelect = page.getByRole('combobox').first();
-    if (await roleSelect.isVisible()) {
-      await roleSelect.selectOption('TEACHER');
-    }
     await page.getByRole('button', { name: '회원가입' }).click();
 
     // Should redirect to login or dashboard
