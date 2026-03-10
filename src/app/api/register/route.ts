@@ -55,21 +55,25 @@ export async function POST(req: Request) {
       return Response.json({ success: true, data: user }, { status: 201 });
     }
 
-    // STUDENT
-    let teacherId: string | undefined;
-    if (classCode) {
-      const teacher = await db.user.findUnique({
-        where: { classCode },
-        select: { id: true, role: true },
-      });
-      if (!teacher || teacher.role !== 'TEACHER') {
-        return Response.json(
-          { success: false, error: 'Invalid class code', code: 'INVALID_CLASS_CODE' },
-          { status: 400 },
-        );
-      }
-      teacherId = teacher.id;
+    // STUDENT — classCode is required
+    if (!classCode) {
+      return Response.json(
+        { success: false, error: '반 코드를 입력해주세요', code: 'CLASS_CODE_REQUIRED' },
+        { status: 400 },
+      );
     }
+
+    const teacher = await db.user.findUnique({
+      where: { classCode },
+      select: { id: true, role: true },
+    });
+    if (!teacher || teacher.role !== 'TEACHER') {
+      return Response.json(
+        { success: false, error: '존재하지 않는 반 코드입니다', code: 'INVALID_CLASS_CODE' },
+        { status: 400 },
+      );
+    }
+    const teacherId = teacher.id;
 
     const user = await db.user.create({
       data: { email, name, password: hashedPassword, role, teacherId },

@@ -126,6 +126,30 @@ describe('POST /api/register', () => {
     expect(data.code).toBe('MISSING_FIELDS');
   });
 
+  it('returns 400 when student registers without a class code', async () => {
+    mockDb.user.findUnique.mockResolvedValueOnce(null); // no email conflict
+
+    const { POST } = await import('@/app/api/register/route');
+
+    const req = new Request('http://localhost/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: 'student@test.com',
+        name: 'Student',
+        password: 'password123',
+        role: 'STUDENT',
+        // no classCode
+      }),
+    });
+
+    const res = await POST(req);
+    const data = (await res.json()) as { success: boolean; code: string };
+
+    expect(res.status).toBe(400);
+    expect(data.code).toBe('CLASS_CODE_REQUIRED');
+  });
+
   it('returns 400 when class code is invalid', async () => {
     mockDb.user.findUnique
       .mockResolvedValueOnce(null) // no email conflict

@@ -105,14 +105,16 @@ export default function RegisterPage() {
 
             {role === 'STUDENT' && (
               <div className="space-y-2">
-                <Label htmlFor="classCode">반 코드 (선택)</Label>
+                <Label htmlFor="classCode">반 코드 <span className="text-red-500">*</span></Label>
                 <Input
                   id="classCode"
                   value={classCode}
                   onChange={(e) => setClassCode(e.target.value.toUpperCase())}
                   placeholder="선생님에게 받은 6자리 코드"
                   maxLength={6}
+                  required
                 />
+                <p className="text-xs text-muted-foreground">선생님에게 반 코드를 받아야 가입할 수 있습니다.</p>
               </div>
             )}
 
