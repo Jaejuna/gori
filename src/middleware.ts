@@ -4,12 +4,12 @@ import { NextResponse } from 'next/server';
 
 const { auth } = NextAuth(authConfig);
 
-const PUBLIC_PATHS = ['/login', '/register', '/api/auth', '/api/register'];
+const PUBLIC_PATHS = ['/', '/login', '/register', '/api/auth', '/api/register'];
 
 export default auth((req) => {
   const { pathname } = req.nextUrl;
 
-  if (PUBLIC_PATHS.some((p) => pathname.startsWith(p))) {
+  if (PUBLIC_PATHS.some((p) => p === '/' ? pathname === '/' : pathname.startsWith(p))) {
     return NextResponse.next();
   }
 
