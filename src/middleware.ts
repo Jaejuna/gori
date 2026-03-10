@@ -24,6 +24,12 @@ export default auth((req) => {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
 
+  // Teacher cannot access student-only routes
+  const studentOnlyPaths = ['/dashboard', '/test', '/recommendations'];
+  if (role === 'TEACHER' && studentOnlyPaths.some((p) => pathname === p || pathname.startsWith(p + '/'))) {
+    return NextResponse.redirect(new URL('/teacher/dashboard', req.url));
+  }
+
   if (pathname.startsWith('/student') && role !== 'STUDENT') {
     return NextResponse.redirect(new URL('/dashboard', req.url));
   }
