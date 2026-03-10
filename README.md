@@ -20,43 +20,86 @@
 
 ## 시스템 아키텍처
 
-```
-브라우저 (Next.js App Router)
-        │
-        ▼
-Vercel Edge Network
-  └── Next.js API Routes
-        │
-        ├── Neon PostgreSQL (+ pgvector)  ← 문제, 사용자, 답변, 추천 데이터
-        ├── HuggingFace Inference API     ← 한국어 임베딩 (jhgan/ko-sroberta-multitask)
-        └── Anthropic API (Claude Haiku)  ← 추천 이유 생성
+```mermaid
+graph TD
+    Browser["브라우저 (Next.js App Router)"]
+    Vercel["Vercel Edge Network\nNext.js API Routes"]
+    Neon["Neon PostgreSQL\n+ pgvector"]
+    HF["HuggingFace Inference API\njhgan/ko-sroberta-multitask"]
+    Claude["Anthropic API\nClaude Haiku"]
+
+    Browser -->|HTTPS| Vercel
+    Vercel -->|쿼리| Neon
+    Vercel -->|임베딩 생성| HF
+    Vercel -->|추천 이유 생성| Claude
 ```
 
 ### AI 추천 파이프라인 (3단계)
 
+```mermaid
+flowchart LR
+    A[학생 오답 제출] --> B
+
+    subgraph B["Stage 1 — Rule-based 분석"]
+        B1[최근 50개 오답 조회]
+        B2[지문 유형별 오답률 계산]
+        B3["가중치 적용\n최근 7일 ×1.5 / 반복 ×2.0"]
+        B4[취약 유형 TOP 3 추출]
+        B1 --> B2 --> B3 --> B4
+    end
+
+    B --> C
+
+    subgraph C["Stage 2 — 임베딩 유사도 탐색"]
+        C1[오답 문제 벡터 조회]
+        C2["pgvector 코사인 유사도\n상위 10개 후보"]
+        C3[이미 푼 문제 제외]
+        C1 --> C2 --> C3
+    end
+
+    C --> D
+
+    subgraph D["Stage 3 — LLM 추천 이유 생성"]
+        D1{24h 캐시 존재?}
+        D2[Claude Haiku 호출]
+        D3[Rule-based fallback]
+        D4["추천 이유 1–2문장"]
+        D1 -->|없음| D2
+        D1 -->|있음| D4
+        D2 -->|성공| D4
+        D2 -->|실패| D3
+        D3 --> D4
+    end
+
+    D --> E["추천 문제 3개 저장 및 표시"]
 ```
-Stage 1 — 오답 패턴 분석 (Rule-based)
-  최근 50개 오답 → 지문 유형별 오답률 → 가중치 적용 → 취약 유형 TOP 3
 
-Stage 2 — 유사 문제 탐색 (임베딩)
-  취약 유형 오답 문제의 벡터 → pgvector 코사인 유사도 → 상위 10개 후보 (이미 푼 문제 제외)
+### 라우트 및 권한 구조
 
-Stage 3 — 추천 이유 생성 (LLM)
-  Claude Haiku → 1–2문장 추천 이유 (24시간 캐시, 일 3회 한도)
-  LLM 장애 시 → Rule-based 문구 자동 fallback
+```mermaid
+graph LR
+    subgraph Public["공개 (누구나)"]
+        L[/login]
+        R[/register]
+    end
+
+    subgraph Student["학생 전용"]
+        SD[/dashboard]
+        ST[/test]
+        SR[/recommendations]
+    end
+
+    subgraph Teacher["선생님 전용"]
+        TD[/teacher/dashboard]
+        TL[/teacher/students]
+        TS["/teacher/students/:id"]
+    end
+
+    MW["미들웨어 (NextAuth JWT)"]
+    MW -->|미인증| L
+    MW -->|role=STUDENT| Student
+    MW -->|role=TEACHER| Teacher
 ```
-
-### 라우트 구조
-
-| 경로 | 접근 권한 | 설명 |
-|------|----------|------|
-| `/login`, `/register` | 누구나 | 인증 페이지 |
-| `/(student)/dashboard` | 학생 | 취약 영역 분석 + 오늘의 추천 |
-| `/(student)/test` | 학생 | 문제 풀기 |
-| `/(student)/recommendations` | 학생 | AI 추천 문제 목록 |
-| `/(teacher)/dashboard` | 선생님 | 반 현황 요약 |
-| `/(teacher)/students` | 선생님 | 학생 목록 (검색·정렬) |
-| `/(teacher)/students/[id]` | 선생님 | 학생 상세 + 추천 검토 |
 
 ---
 
